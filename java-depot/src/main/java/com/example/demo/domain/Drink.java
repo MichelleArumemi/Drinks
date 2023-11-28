@@ -1,16 +1,17 @@
 package com.example.demo.domain;
 
-import com.example.demo.domain.Ingredient;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.Date;
 import java.util.List;
-
-@Entity(name = "drink")
+@Entity
+@Table(name = "drink")
+//or @Entity(name = "drink")
 public class Drink {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private int capacity;
@@ -18,12 +19,23 @@ public class Drink {
     private String type;
     private String company;
 
-    @OneToMany
-    private List<Ingredient> ingredients;
+    @CreationTimestamp
+    Date created_at;
 
+    @UpdateTimestamp
+    Date updated_at;
     public Drink() {
     }
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
 
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    @OneToMany
+    private List<Ingredient> ingredients;
     public Drink(Long id, String name, int capacity, String colour, String type, String company, List<Ingredient> ingredients) {
         this.id = id;
         this.name = name;
@@ -32,6 +44,14 @@ public class Drink {
         this.type = type;
         this.company = company;
         this.ingredients = ingredients;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -72,21 +92,5 @@ public class Drink {
 
     public void setCompany(String company) {
         this.company = company;
-    }
-
-    public List<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 }

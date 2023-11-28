@@ -9,5 +9,6 @@ import java.util.Optional;
 @Repository
 public interface DrinkRepository extends JpaRepository<Drink, Long>{
    //@Query("")
+    // List<Drink> findDrinkByPriceGreaterThan(int price)
 }
 

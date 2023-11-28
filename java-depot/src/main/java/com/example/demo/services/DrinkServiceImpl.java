@@ -10,7 +10,7 @@ import java.util.Optional;
 
     @Service
     public class DrinkServiceImpl implements DrinkService {
-    @Autowired
+        @Autowired
         DrinkRepository drinkRepository;
         @Override
         public Drink saveDrink(Drink drink) {

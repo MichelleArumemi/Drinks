@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM
+        "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www/thymeleaf.org">
+
+<head th:replace="~{fragments/fragments :: head}"><title>Inventory</title></head>
+
+<body>
+    <a th:href="{@/showNewDrinkForm}" class="btn btn-primary btn-sm mb-3">Add New Drink</a>
+
+<table border="1" class="table table-striped table-responsive">
+    <thead>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Type</th>
+    <th>Company</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+    <tr th:each="drink : ${drinks}"></tr>
+        <td th:text="${drink.name}"></td>
+        <td th:text="${drink.price}"></td>
+        <td th:text="${drink.Type}"></td>
+        <td th:text="${drink.Company}"></td>
+        <td th:text="${drink.Actions}"></td>
+        <td>
+            <a class="btn btn primary"
+        </td>
+    </tbody>
+</table>
+</body>
